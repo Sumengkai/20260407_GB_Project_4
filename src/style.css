@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Microsoft JhengHei', '微軟正黑體', Arial, sans-serif;
+  font-size: 13px;
+  background: #e8eef5;
+  color: #1a2b4a;
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
