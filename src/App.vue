@@ -186,7 +186,7 @@
             <div class="form-cell inp c3">
               <label class="chk-label"><input type="radio" v-model="d5.accepted" value="Y" /><span>是</span></label>
               <label class="chk-label"><input type="radio" v-model="d5.accepted" value="N" /><span>否</span></label>
-              <span v-if="!d5.accepted" style="color:#888;font-size:12px;margin-left:8px">— 尚未設定 —</span>
+              <span v-if="!d5.accepted" style="color:#333;font-size:12px;margin-left:8px">— 尚未設定 —</span>
               <span v-if="d5.accepted === 'N'" style="color:#c0392b;font-size:12px;margin-left:8px;font-weight:bold">不受理：後續製程頁籤將會隱藏</span>
             </div>
           </div>
@@ -584,7 +584,7 @@ const visibleTabIndices = computed(() => {
   }
   if (iq.typeCoating)      idx.push(6, 7)
   if (iq.typePurification) idx.push(8, 9)
-  if (iq.typeMachining || iq.typeCoating || iq.typePurification) idx.push(10)
+  // 品檢頁籤暫時隱藏
   return idx
 })
 watch(visibleTabIndices, (newList) => {
@@ -1010,7 +1010,7 @@ function handleQualityChange({ lotNo, paramKey, value }) {
 }
 .mode-select {
   padding: 3px 10px; border: 1px solid #b0c4de; border-radius: 3px;
-  font-size: 13px; font-family: inherit; background: #fff; color: #1a3a6e;
+  font-size: 13px; font-family: inherit; background: #fff; color: #000;
   cursor: pointer;
 }
 
@@ -1020,7 +1020,7 @@ function handleQualityChange({ lotNo, paramKey, value }) {
   padding:6px 12px; display:flex; align-items:center; gap:6px; flex-wrap:wrap;
 }
 .toolbar-label { background:#3a6abf; color:#fff; padding:2px 10px; border-radius:3px; font-size:12px; margin-right:4px; }
-.toolbar-hint  { font-size:12px; color:#888; font-style:italic; padding:2px 8px; }
+.toolbar-hint  { font-size:12px; color:#333; font-style:italic; padding:2px 8px; }
 
 /* 按鈕 */
 .btn { padding:3px 12px; font-size:12px; font-family:inherit; border:1px solid; border-radius:3px; cursor:pointer; transition:filter .15s; }
@@ -1036,11 +1036,11 @@ function handleQualityChange({ lotNo, paramKey, value }) {
 .form-grid { padding:8px 12px; display:flex; flex-direction:column; gap:0; }
 .form-row  { display:grid; grid-template-columns:140px 1fr 140px 1fr; border-bottom:1px solid #e0eaf5; min-height:32px; }
 .form-cell { padding:4px 8px; display:flex; align-items:center; }
-.lbl { background:#c8daf0; color:#1a3a6e; font-weight:bold; font-size:12px; border-right:1px solid #b0c4de; white-space:nowrap; }
+.lbl { background:#c8daf0; color:#000; font-weight:bold; font-size:12px; border-right:1px solid #b0c4de; white-space:nowrap; }
 .inp { background:#f5f9ff; }
 .c3  { grid-column:span 3; }
 .c4  { grid-column:span 4; }
-.sys-lbl { background:#d8d8d8; color:#555; }
+.sys-lbl { background:#d8d8d8; color:#000; }
 
 /* 批號總覽 */
 .lot-overview {
@@ -1048,10 +1048,10 @@ function handleQualityChange({ lotNo, paramKey, value }) {
   border-radius: 3px; padding: 5px 8px;
   display: flex; flex-direction: column; gap: 3px; min-height: 32px;
 }
-.lot-ov-empty { color: #aaa; font-style: italic; font-size: 12px; }
+.lot-ov-empty { color: #555; font-style: italic; font-size: 12px; }
 .lot-ov-row   { display: flex; align-items: center; gap: 8px; font-size: 12px; }
-.lot-ov-proc  { color: #2a5aaf; font-weight: bold; white-space: nowrap; min-width: 90px; }
-.lot-ov-lots  { color: #1a2b4a; }
+.lot-ov-proc  { color: #000; font-weight: bold; white-space: nowrap; min-width: 90px; }
+.lot-ov-lots  { color: #000; }
 
 /* 系統 LOG */
 .sys-log {
@@ -1060,12 +1060,12 @@ function handleQualityChange({ lotNo, paramKey, value }) {
   padding: 5px 8px; font-size: 12px;
   display: flex; flex-direction: column; gap: 1px;
 }
-.log-empty { color: #aaa; font-style: italic; text-align: center; padding: 4px; }
+.log-empty { color: #555; font-style: italic; text-align: center; padding: 4px; }
 .log-entry { display: flex; align-items: baseline; gap: 6px; line-height: 1.7; border-bottom: 1px solid #e4e8ee; }
 .log-entry:last-child { border-bottom: none; }
-.log-time  { color: #7a8fa8; white-space: nowrap; font-size: 11px; flex-shrink: 0; }
-.log-dot   { color: #bbb; }
-.log-msg   { color: #333; word-break: break-all; }
+.log-time  { color: #444; white-space: nowrap; font-size: 11px; flex-shrink: 0; }
+.log-dot   { color: #666; }
+.log-msg   { color: #000; word-break: break-all; }
 
 .log-entry.create  .log-msg { color: #1a7a40; }
 .log-entry.confirm .log-msg { color: #7a5500; font-weight: bold; }
@@ -1082,8 +1082,8 @@ function handleQualityChange({ lotNo, paramKey, value }) {
   border-radius: 3px; padding: 5px 8px; min-height: 32px;
 }
 .lock-table { width: auto; min-width: 360px; }
-.wo-empty { color: #aaa; font-style: italic; font-size: 12px; padding: 4px; }
-.wo-no    { font-family: monospace; font-weight: bold; color: #1a3a6e; }
+.wo-empty { color: #555; font-style: italic; font-size: 12px; padding: 4px; }
+.wo-no    { font-family: monospace; font-weight: bold; color: #000; }
 .wo-badge { display: inline-block; padding: 1px 8px; border-radius: 8px; font-size: 11px; font-weight: bold; }
 .badge-self { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
 .badge-out  { background: #fff3cd; color: #856404; border: 1px solid #ffc107; }
@@ -1093,21 +1093,21 @@ function handleQualityChange({ lotNo, paramKey, value }) {
   width:100%; padding:3px 6px; border:1px solid #b0c4de; border-radius:3px;
   font-size:13px; font-family:inherit; background:#fff;
 }
-.f-input[readonly], .f-input:disabled { background:#edf3fa; color:#555; cursor:default; }
+.f-input[readonly], .f-input:disabled { background:#edf3fa; color:#333; cursor:default; }
 .f-input:not([readonly]):not(:disabled):focus { outline:none; border-color:#3a6abf; box-shadow:0 0 0 2px rgba(58,106,191,.2); }
 .req-inp { border-color:#c0392b; }
 .f-textarea {
   width:100%; padding:4px 6px; border:1px solid #b0c4de; border-radius:3px;
   font-size:13px; font-family:inherit; resize:vertical;
 }
-.f-textarea[readonly], .f-textarea:disabled { background:#edf3fa; color:#555; cursor:default; }
-.sys-ta { background:#f0f0f0 !important; color:#666; }
+.f-textarea[readonly], .f-textarea:disabled { background:#edf3fa; color:#333; cursor:default; }
+.sys-ta { background:#f0f0f0 !important; color:#333; }
 
 .chk-label { display:flex; align-items:center; gap:4px; margin-right:12px; cursor:pointer; }
 .chk-label input { width:14px; height:14px; }
 .tag { display:inline-block; background:#3a6abf; color:#fff; padding:1px 8px; border-radius:10px; font-size:12px; margin-right:6px; }
-.file-name { font-size:12px; color:#666; margin-left:8px; }
-.toolbar-id { font-size:12px; color:#1a3a6e; font-weight:bold; background:#dceeff; padding:2px 10px; border-radius:3px; border:1px solid #7aaad8; }
+.file-name { font-size:12px; color:#222; margin-left:8px; }
+.toolbar-id { font-size:12px; color:#000; font-weight:bold; background:#dceeff; padding:2px 10px; border-radius:3px; border:1px solid #7aaad8; }
 .status-badge { font-size:12px; padding:2px 10px; border-radius:10px; }
 .status-badge.confirmed { background:#d4edda; color:#155724; border:1px solid #c3e6cb; font-weight:bold; }
 
@@ -1118,7 +1118,7 @@ function handleQualityChange({ lotNo, paramKey, value }) {
 .dtable tr:nth-child(even) td { background:#f0f6ff; }
 .dtable tr:hover td           { background:#dceeff; cursor:pointer; }
 .dtable tr.row-sel td         { background:#c8e0ff; font-weight:bold; }
-.empty-row { color:#999; padding:16px; text-align:center; }
+.empty-row { color:#444; padding:16px; text-align:center; }
 
 /* Modal */
 .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:1000; }

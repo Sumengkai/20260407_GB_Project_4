@@ -26,7 +26,7 @@
             <th>執行方式</th>
             <th>品名</th>
             <th>規格1</th><th>規格2</th><th>規格3</th>
-            <th>數量</th><th>批號</th><th>備註</th>
+            <th>數量</th><th>批號</th><th>代表性批號</th><th>備註</th>
           </tr>
         </thead>
         <tbody>
@@ -50,8 +50,9 @@
             <td><input v-if="editForms[row.id]" v-model="editForms[row.id].spec2"  class="cell-input" placeholder="規格2" /></td>
             <td><input v-if="editForms[row.id]" v-model="editForms[row.id].spec3"  class="cell-input" placeholder="規格3" /></td>
             <td><input v-if="editForms[row.id]" v-model="editForms[row.id].qty"    class="cell-input req" type="number" placeholder="數量*" /></td>
-            <td><input v-if="editForms[row.id]" v-model="editForms[row.id].lotNo"  class="cell-input req" placeholder="批號*" /></td>
-            <td><input v-if="editForms[row.id]" v-model="editForms[row.id].remark" class="cell-input" placeholder="備註" /></td>
+            <td><input v-if="editForms[row.id]" v-model="editForms[row.id].lotNo"    class="cell-input req" placeholder="批號*" /></td>
+            <td><input v-if="editForms[row.id]" v-model="editForms[row.id].repLotNo" class="cell-input" placeholder="代表性批號" /></td>
+            <td><input v-if="editForms[row.id]" v-model="editForms[row.id].remark"   class="cell-input" placeholder="備註" /></td>
           </tr>
 
           <!-- 新增輸入列 -->
@@ -73,12 +74,13 @@
             <td><input v-model="newRow.spec2"  class="cell-input" placeholder="規格2" /></td>
             <td><input v-model="newRow.spec3"  class="cell-input" placeholder="規格3" /></td>
             <td><input v-model="newRow.qty"    class="cell-input req" type="number" placeholder="數量*" /></td>
-            <td><input v-model="newRow.lotNo"  class="cell-input req" placeholder="批號*" /></td>
-            <td><input v-model="newRow.remark" class="cell-input" placeholder="備註" /></td>
+            <td><input v-model="newRow.lotNo"    class="cell-input req" placeholder="批號*" /></td>
+            <td><input v-model="newRow.repLotNo" class="cell-input" placeholder="代表性批號" /></td>
+            <td><input v-model="newRow.remark"   class="cell-input" placeholder="備註" /></td>
           </tr>
 
           <tr v-if="!rows.length">
-            <td colspan="9" class="hint-row">請先選擇【執行方式】，再填寫其他欄位，勾選後點擊「新增」</td>
+            <td colspan="10" class="hint-row">請先選擇【執行方式】，再填寫其他欄位，勾選後點擊「新增」</td>
           </tr>
         </tbody>
       </table>
@@ -134,7 +136,7 @@ function toggleCheck(id) {
   else checkedIds.add(id)
 }
 
-function emptyForm() { return { execMode: '01', productKey: '', spec1: '', spec2: '', spec3: '', qty: null, lotNo: '', remark: '' } }
+function emptyForm() { return { execMode: '01', productKey: '', spec1: '', spec2: '', spec3: '', qty: null, lotNo: '', repLotNo: '', remark: '' } }
 const newRow = reactive({ checked: false, ...emptyForm() })
 function resetNew() { Object.assign(newRow, { checked: false, ...emptyForm() }) }
 
@@ -187,7 +189,7 @@ function handleDelete() {
 .row-checked td      { background: #d4e8ff !important; }
 .new-row td          { background: #f0fff4; }
 .new-row-checked td  { background: #d0f0e0 !important; }
-.hint-row { color: #aaa; text-align: center; padding: 12px; font-style: italic; }
+.hint-row { color: #444; text-align: center; padding: 12px; font-style: italic; }
 
 .cell-input { width: 100%; padding: 2px 5px; border: 1px solid #b0c4de; border-radius: 2px; font-size: 12px; font-family: inherit; background: #fff; box-sizing: border-box; }
 .cell-input:focus { border-color: #3a6abf; outline: none; }
@@ -209,8 +211,8 @@ function handleDelete() {
 
 .sim-overlay { position:fixed; inset:0; background:rgba(0,0,0,.45); display:flex; align-items:center; justify-content:center; z-index:1000; }
 .sim-box     { background:#fff; border-radius:8px; padding:60px 80px; text-align:center; position:relative; box-shadow:0 8px 32px rgba(0,0,0,.25); }
-.sim-title   { font-size:36px; font-weight:bold; color:#1a3a6e; }
-.sim-close   { position:absolute; top:12px; right:16px; background:none; border:none; font-size:18px; cursor:pointer; color:#888; }
+.sim-title   { font-size:36px; font-weight:bold; color:#000; }
+.sim-close   { position:absolute; top:12px; right:16px; background:none; border:none; font-size:18px; cursor:pointer; color:#333; }
 .sim-close:hover { color:#333; }
 .action-select {
   padding: 3px 8px; border: 1px solid rgba(255,255,255,.5); border-radius: 3px;

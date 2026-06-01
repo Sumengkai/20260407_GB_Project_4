@@ -107,7 +107,7 @@ function handleCancel() {
 .dtable tr:nth-child(even) td { background: #f0f6ff; }
 .dtable tr:hover td           { background: #dceeff; cursor: pointer; }
 .row-checked td               { background: #ffe0e0 !important; }
-.empty-row { color: #999; padding: 16px; text-align: center; }
+.empty-row { color: #444; padding: 16px; text-align: center; }
 
 .exec-badge   { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 11px; font-weight: bold; white-space: nowrap; }
 .exec-self    { background: #ddeeff; color: #1a4a9e; border: 1px solid #aaccee; }

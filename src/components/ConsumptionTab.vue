@@ -146,7 +146,7 @@ function cancelChecked(section) {
 .dtable tr:nth-child(even) td { background:#f0f6ff; }
 .dtable tr:hover td           { background:#dceeff; cursor:pointer; }
 .row-checked td               { background:#ffe0e0 !important; }
-.empty-row { color:#999; padding:16px; text-align:center; }
+.empty-row { color:#444; padding:16px; text-align:center; }
 
 .btn { padding:3px 10px; font-size:12px; font-family:inherit; border:1px solid; border-radius:3px; cursor:pointer; display:inline-flex; align-items:center; gap:4px; }
 .btn:hover    { filter:brightness(1.1); }

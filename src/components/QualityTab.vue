@@ -214,7 +214,7 @@ function onChange(lotNo, paramKey, value) {
 .proc-btn:hover  { background: #e0ecff; }
 .proc-btn.active { background: #3a6abf; color: #fff; border-color: #2a5aaf; font-weight: bold; }
 
-.no-hint { padding: 40px; text-align: center; color: #aaa; font-size: 13px; font-style: italic; }
+.no-hint { padding: 40px; text-align: center; color: #555; font-size: 13px; font-style: italic; }
 
 /* 產品區塊 */
 .product-section { margin: 10px 12px 16px; border: 1px solid #b8cfe8; border-radius: 4px; overflow: hidden; }
@@ -241,13 +241,13 @@ function onChange(lotNo, paramKey, value) {
 .col-lot   { min-width: 130px; }
 .col-param { min-width: 90px; }
 .dtable td { padding: 3px 5px; border: 1px solid #d0dce8; text-align: center; }
-.td-lot    { font-weight: 500; color: #1a4a9e; background: #eef4ff !important; white-space: nowrap; }
+.td-lot    { font-weight: 500; color: #000; background: #eef4ff !important; white-space: nowrap; }
 .data-row:nth-child(even) td { background: #f5f8ff; }
 .data-row:hover td           { background: #dceeff; }
 
 /* 規格基準列 */
-.spec-row td { background: #fff8e6 !important; color: #7a5000; font-size: 11px; font-style: italic; }
-.spec-hdr    { font-weight: bold; text-align: right; padding-right: 8px; white-space: nowrap; color: #5a3800; }
+.spec-row td { background: #fff8e6 !important; color: #333; font-size: 11px; font-style: italic; }
+.spec-hdr    { font-weight: bold; text-align: right; padding-right: 8px; white-space: nowrap; color: #000; }
 .spec-val    { text-align: center; }
 
 /* 儲存格輸入 */
