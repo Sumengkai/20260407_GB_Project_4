@@ -94,9 +94,10 @@
 | 9 | spec3 | varchar | input | 規格3 | 50 | — | NULL |
 | 10 | qty | decimal | input | 產出數量 | 12,4 | — | 0.0000 |
 | 11 | lot_no | varchar | input | 產出批號 | 30 | — | NULL |
-| 12 | remark | varchar | input | 備註 | 200 | — | NULL |
-| 13 | sort_order | int | — | 顯示排序 | — | — | 0 |
-| 14 | created_at | datetime | readonly | 建立時間 | — | YYYY-MM-DD HH:mm:ss | CURRENT_TIMESTAMP |
+| 12 | rep_lot_no | varchar | input | 代表性批號 | 30 | — | NULL |
+| 13 | remark | varchar | input | 備註 | 200 | — | NULL |
+| 14 | sort_order | int | — | 顯示排序 | — | — | 0 |
+| 15 | created_at | datetime | readonly | 建立時間 | — | YYYY-MM-DD HH:mm:ss | CURRENT_TIMESTAMP |
 
 **主鍵**：`output_id`  
 **外鍵**：`appl_id → T_D5_APPLICATION.appl_id`  
